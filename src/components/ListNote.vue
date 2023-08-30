@@ -16,7 +16,7 @@
 <script>
     import { ref, onMounted } from 'vue';
 
-    import { collection, onSnapshot } from "firebase/firestore";
+    import { collection, onSnapshot, deleteDoc, doc } from "firebase/firestore";
     import { db } from '@/firebase'
 
     export default {
@@ -47,8 +47,13 @@
                 });
             })
 
+            const deleteNote = id => {
+                deleteDoc(doc(notesCollectionRef, id));
+            }
+
             return{
-                notes
+                notes,
+                deleteNote
             }
         }
     }

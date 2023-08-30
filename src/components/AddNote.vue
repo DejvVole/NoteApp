@@ -4,15 +4,7 @@
         <!-- v-model uklada do premennej to co mame vo form -->
         <textarea name="" id="" cols="30" rows="10" v-model="newNoteContent"></textarea>
         
-        <p>Choose note color: </p>
-        <div class="colors-buttons">      
-            <button type="button" class = "gold" @click="setColor(1); getColor()"></button>
-            <button type="button" class = "blue" @click="setColor(2); getColor()"></button>
-            <button type="button" class = "lightgreen" @click="setColor(3); getColor()"></button>
-            <button type="button" class = "pink" @click="setColor(4); getColor()"></button>
-            <button type="button" class = "body" @click="setColor(5); getColor()"></button>
-            <button type="button" class = "orange" @click="setColor(6); getColor()"></button>
-        </div>
+        <NoteColors @color-set = "setColor($event)"/>
         
         <p>Your color:</p>
         <div id="choosen-color" class=""></div>
@@ -31,14 +23,21 @@
 </template>
 
 <script>
+    import NoteColors from './NoteColors.vue'
+
     import { ref, reactive, toRefs } from 'vue';
 
     import { addDoc, collection } from "firebase/firestore";
     import { db } from '@/firebase'
 
     const notesCollectionRef = collection(db, 'notes');
+    let color = 0;
 
-    export default {        
+    export default {  
+        components: {
+            NoteColors
+        },
+
         setup() {
             // tu sa uklada text z form
             const newNoteContent = ref('')
@@ -60,7 +59,7 @@
 
             const showInputFunciton = () => {
                 state.showInput = !state.showInput
-                // color = 0;
+                color = 0;
             }
 
             const hideInputFunciton = () => {
@@ -68,12 +67,27 @@
                 state.showInput = !state.showInput
             }
 
+            const setColor = colorId => {
+                // console.log(colorId)
+                color = colorId
+                getColor()
+            }
+
+            const getColor = () => {
+                const items = document.getElementById('choosen-color');
+                items.className = "";
+                items.classList.add('c'+color); 
+
+            }
+
             return {
                 ...toRefs(state),
                 addNote,
                 newNoteContent,
                 hideInputFunciton,
-                showInputFunciton
+                showInputFunciton,
+                setColor,
+                getColor
             }
         }
     }
