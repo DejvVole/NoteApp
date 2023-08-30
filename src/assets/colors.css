@@ -1,0 +1,35 @@
+.c0{
+    background-color: white;
+    border: 1px solid white;
+}
+
+.gold,
+.c1{
+    background-color: #fccb06;
+    border: 1px solid #fccb06;
+}
+.blue,
+.c2{
+    background-color: #b1ddf1;
+    border: 1px solid #b1ddf1;
+}
+.lightgreen,
+.c3{
+    background-color: #008080;
+    border: 1px solid #008080;
+}
+.pink,
+.c4{
+    background-color: #ca2c92;
+    border: 1px solid #ca2c92;
+}
+.body,
+.c5{
+    background-color: #ffecd1;
+    border: 1px solid #ffecd1;
+}
+.orange,
+.c6{
+    background-color: #ff7f11;
+    border: 1px solid #ff7f11;
+}  

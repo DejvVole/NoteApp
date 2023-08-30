@@ -4,11 +4,9 @@
         <!-- v-model uklada do premennej to co mame vo form -->
         <textarea name="" id="" cols="30" rows="10" v-model="newNoteContent"></textarea>
         
+        <!-- Po "odpaleni udalosti color-set" sa spusti funkcia setColor a parameter sa ziska pomocou event -->
         <NoteColors @color-set = "setColor($event)"/>
         
-        <p>Your color:</p>
-        <div id="choosen-color" class=""></div>
-
         <button type="submit" class = "save-button">Save</button>      
 
         <button type="button" @click="hideInputFunciton" class = "close-button">X</button>
@@ -67,17 +65,10 @@
                 state.showInput = !state.showInput
             }
 
+            // setne sa calor na ulozenie do db
             const setColor = colorId => {
                 // console.log(colorId)
                 color = colorId
-                getColor()
-            }
-
-            const getColor = () => {
-                const items = document.getElementById('choosen-color');
-                items.className = "";
-                items.classList.add('c'+color); 
-
             }
 
             return {
@@ -86,13 +77,61 @@
                 newNoteContent,
                 hideInputFunciton,
                 showInputFunciton,
-                setColor,
-                getColor
+                setColor
             }
         }
     }
 </script>
 
-<style lang="">
-    
+<style lang="css" scoped>
+    .addNoteInput{
+        position: absolute;
+        top: 0;
+        left: 0;
+
+        width: 100%;
+        height: 100%;
+
+        background-color: rgba(0, 0, 0, 0.833);
+    }
+
+    .addNoteInput textarea{
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 15%;
+    }
+
+    .addNoteInput p{
+        text-align: center;
+        color: white;
+
+        margin-top: 2%;
+        letter-spacing: 2px;
+    }
+
+    .add-note{
+        position: absolute;
+        right: 5%;
+        bottom: 5%;
+    }
+
+    .close-button{
+        position: absolute;
+        right: 2%;
+        top: 4%;
+
+        border: none;
+        background-color: rgba(0, 0, 0, 0.833);
+        color: white;
+
+        cursor: pointer;
+    }
+
+    .save-button{
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 5%;
+    }
 </style>
