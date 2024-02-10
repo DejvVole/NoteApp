@@ -1,6 +1,12 @@
 # NoteApp
 
-This template should help get you started developing with Vue 3 in Vite.
+Small note app in Vue 3 and Vite. Backend is done, frontend still in progress!
+
+![Snímka obrazovky 2024-02-10 215956](https://github.com/DejvVole/NoteApp/assets/83863861/1a45b4e4-488b-4820-a3bd-b0ef5450cb7b)
+
+
+![Snímka obrazovky 2024-02-10 220019](https://github.com/DejvVole/NoteApp/assets/83863861/8fae121f-e1d3-4444-9bc7-7c43770dd828)
+
 
 ## Recommended IDE Setup
 
